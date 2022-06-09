@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { compareSync } from 'bcryptjs';
+import { compare } from 'bcryptjs';
 import User from '../database/models/users';
 
 const emailValidation = (email: string): boolean => {
@@ -11,7 +11,7 @@ const passwordValidation = async (email: string, password: string):Promise<boole
   const user = await User.findOne({ where: { email } });
   if (!user) return false;
 
-  const checkPassword = compareSync(password, user.password);
+  const checkPassword = await compare(password, user.password);
   return checkPassword;
 };
 
