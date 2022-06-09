@@ -6,6 +6,7 @@ class User extends Model {
   public role!: string;
   public email!: string;
   public password!: string;
+  public id!:number;
 }
 
 User.init({
