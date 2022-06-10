@@ -20,4 +20,20 @@ export default class MatchesController {
       res.status(200).json(matches);
     }
   };
+
+  public addNewMatch = async (req: Request, res: Response) => {
+    const matchInfo = req.body;
+
+    const newMatch = await this.matchesService.addNewMatch(matchInfo);
+
+    res.status(201).json(newMatch);
+  };
+
+  public finishMatch = async (req: Request, res: Response) => {
+    const { id } = req.params;
+
+    await this.matchesService.finishMatch(parseInt(id, 10));
+
+    res.status(200).json({ message: 'Finished' });
+  };
 }

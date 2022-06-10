@@ -24,4 +24,15 @@ export default class MatchesService {
 
     return matches;
   };
+
+  public addNewMatch = async (match: Match) => {
+    const newMatch = await Match.create(match);
+
+    return newMatch;
+  };
+
+  public finishMatch = async (id:number) => {
+    const finishedMatch = await Match.findByPk(id);
+    await finishedMatch?.update({ inProgress: false });
+  };
 }
