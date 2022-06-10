@@ -28,7 +28,7 @@ describe('Testa o endpoint /teams', () => {
   it('Testa que o retorno do endpoint /teams está correto', async () => {
     chaiHttpResponse = await chai
        .request(app)
-       .post('/teams')
+       .get('/teams')
 
     expect(chaiHttpResponse.status).to.be.equal(200)
     expect(chaiHttpResponse.body.length).to.equal(3)
@@ -37,7 +37,7 @@ describe('Testa o endpoint /teams', () => {
   it('Testa que o retorno do endpoint /teams/:id está correto', async () => {
     chaiHttpResponse = await chai
        .request(app)
-       .post('/teams/1')
+       .get('/teams/1')
 
     expect(chaiHttpResponse.status).to.be.equal(200)
     expect(chaiHttpResponse.body).to.have.property('id')
