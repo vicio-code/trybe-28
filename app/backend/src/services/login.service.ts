@@ -30,6 +30,7 @@ export default class LoginService {
 
   public validate = async (token: string) => {
     const userInfos = this.token.decode(token);
+    if (userInfos === 'error') return null;
     return userInfos.role;
   };
 }

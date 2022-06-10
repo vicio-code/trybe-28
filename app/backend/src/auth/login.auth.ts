@@ -16,7 +16,11 @@ export default class Token {
   };
 
   public decode = (token: string) => {
-    const decoded = verify(token, this.secret);
-    if (typeof decoded !== 'string') return decoded.data;
+    try {
+      const decoded = verify(token, this.secret);
+      if (typeof decoded !== 'string') return decoded.data;
+    } catch (error) {
+      return 'error';
+    }
   };
 }

@@ -20,8 +20,8 @@ export default class LoginController {
 
     if (typeof authorization === 'string') {
       const role = await this.loginServie.validate(authorization);
-
-      res.status(200).json(role);
+      if (!role)res.status(421).json({ message: 'invalid token' });
+      else res.status(200).json(role);
     }
   };
 }
