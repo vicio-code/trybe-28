@@ -35,4 +35,11 @@ export default class MatchesService {
     const finishedMatch = await Match.findByPk(id);
     await finishedMatch?.update({ inProgress: false });
   };
+
+  public editGoals = async (id:number, homeTeamGoals:number, awayTeamGoals:number) => {
+    const match = await Match.findByPk(id);
+    if (match?.inProgress === true) {
+      await match.update({ homeTeamGoals, awayTeamGoals });
+    }
+  };
 }
