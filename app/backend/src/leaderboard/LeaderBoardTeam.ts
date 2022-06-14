@@ -45,4 +45,19 @@ export default class LeaderBoardTeam {
     this.goalsBalance += teamGoals - goalsOwn;
     this.efficiency = parseFloat(((this.totalPoints / (this.totalGames * 3)) * 100).toFixed(2));
   }
+
+  public getStats() {
+    return {
+      name: this.name,
+      totalPoints: this.totalPoints,
+      totalGames: this.totalGames,
+      totalVictories: this.totalVictories,
+      totalDraws: this.totalDraws,
+      totalLosses: this.totalLosses,
+      goalsFavor: this.goalsFavor,
+      goalsOwn: this.goalsOwn,
+      goalsBalance: this.goalsBalance,
+      efficiency: this.efficiency,
+    };
+  }
 }
